@@ -1,11 +1,11 @@
 import { todoActionType } from "../actionTypes";
-import { VISIBILITY_FILTERS } from "../../constants";
+import { TODO_FILTERS } from "../../constants";
 
 const INITIAL_STATE = {
-  activeFilter: VISIBILITY_FILTERS.ALL
+  activeFilter: TODO_FILTERS.ALL
 };
 
-const visibilityFilter = (state = INITIAL_STATE, action) => {
+const todoFilter = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case todoActionType.SET_FILTER: {
       const { filter } = action.payload;
@@ -20,4 +20,4 @@ const visibilityFilter = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default visibilityFilter;
+export default todoFilter;

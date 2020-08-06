@@ -1,11 +1,7 @@
 {
     "gitflow4code.features": [
         {
-            "name": "feature/react-redux",
-            "base": "develop"
-        },
-        {
-            "name": "feature/todo-list",
+            "name": "feature/refactoring-redux",
             "base": "develop"
         }
     ]

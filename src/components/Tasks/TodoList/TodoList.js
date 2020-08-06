@@ -2,7 +2,7 @@ import React from "react";
 import Todo from "./Todo";
 import { connect } from 'react-redux';
 
-import { getTodosByVisibilityFilter } from '../../../redux/selectors'
+import { getFilteredTodoArray } from '../../../redux/selectors'
 
 const TodoList = ({ todos }) => (
   <ul className="todo-list">
@@ -19,7 +19,7 @@ const TodoList = ({ todos }) => (
  * Container
  */
 const mapStateToProps = state => {
-  const todos = getTodosByVisibilityFilter(state);
+  const todos = getFilteredTodoArray(state);
   return { todos };
 }
 /* 

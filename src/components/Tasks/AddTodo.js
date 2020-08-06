@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 
-import { addTodo } from '../../redux/actionCreators';
+import { todoActionCreators } from '../../redux/actionCreators';
 
 class AddTodo extends React.Component {
   constructor(props) {
@@ -9,7 +9,6 @@ class AddTodo extends React.Component {
     this.state = { input: "" };
     // samples for test
     [...Array(5).keys()].forEach((x, i) => {
-      console.log("AddTodo -> constructor -> x, i", x, i)
       this.props.addTodo('test ' + (i + 1));
     })
 
@@ -47,6 +46,7 @@ class AddTodo extends React.Component {
  */
 const mapStateToProps = null;
 
+const { addTodo } = todoActionCreators;
 const mapDispatchToProps = {
   addTodo
 };
