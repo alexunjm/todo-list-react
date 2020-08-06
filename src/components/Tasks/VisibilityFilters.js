@@ -4,6 +4,7 @@ import cx from "classnames";
 
 import { todoFilterActionCreators } from '../../redux/actionCreators'
 import { TODO_FILTERS } from "../../constants";
+import { todoFilterSelector } from "../../redux/selectors";
 
 const VisibilityFilters = ({ activeFilter, setFilter }) => {
   return (
@@ -30,13 +31,14 @@ const VisibilityFilters = ({ activeFilter, setFilter }) => {
 /***
  * Container
  */
+const { setFilter } = todoFilterActionCreators;
+const { getActiveFilter } = todoFilterSelector;
 const mapStateToProps = state => {
   return ({
-    activeFilter: state.todoFilter.activeFilter
+    activeFilter: getActiveFilter(state)
   })
 };
 
-const { setFilter } = todoFilterActionCreators
 const mapDispatchToProps = {
   setFilter
 };

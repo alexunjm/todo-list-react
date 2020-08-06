@@ -1,0 +1,1 @@
+export const getActiveFilter = state => state.todoFilter.activeFilter;

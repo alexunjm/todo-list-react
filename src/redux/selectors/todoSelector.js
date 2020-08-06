@@ -1,4 +1,4 @@
-import { TODO_FILTERS } from "../constants";
+import { TODO_FILTERS } from "../../constants";
 
 const is = (filter) => ({
   ALL: filter === TODO_FILTERS.ALL,
