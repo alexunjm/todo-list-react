@@ -50,7 +50,11 @@ const { addTodo } = todoActionCreators;
 const mapDispatchToProps = {
   addTodo
 };
-
+/*** another way to pass action creators for map reduce functions
+const mapDispatchToProps = dispatch => ({
+  addTodo: (content) => dispatch(addTodo(content))
+});
+ */
 export default connect(
   mapStateToProps,
   mapDispatchToProps
