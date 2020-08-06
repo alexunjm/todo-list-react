@@ -7,10 +7,12 @@ class AddTodo extends React.Component {
   constructor(props) {
     super(props);
     this.state = { input: "" };
-  }
-  
-  cleanInput() {
-    this.updateInput("");
+    // samples for test
+    [...Array(5).keys()].forEach((x, i) => {
+      console.log("AddTodo -> constructor -> x, i", x, i)
+      this.props.addTodo('test ' + (i + 1));
+    })
+
   }
 
   updateInput = input => {
@@ -21,7 +23,7 @@ class AddTodo extends React.Component {
     // dispatches actions to add todo
     this.props.addTodo(this.state.input);
     // sets state back to empty string
-    this.cleanInput();
+    this.updateInput("");
   };
 
   render() {
@@ -43,18 +45,13 @@ class AddTodo extends React.Component {
 /***
  * Container
  */
-const mapStateToProps = state => {
-  return ({
-    allIds: state.todos.allIds,
-    byIds: state.todos.byIds
-  })
-}
+const mapStateToProps = null;
 
 const mapDispatchToProps = {
   addTodo
-}
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddTodo)
+)(AddTodo);

@@ -19,15 +19,14 @@ const TodoList = ({ todos }) => (
  * Container
  */
 const mapStateToProps = state => {
-  const { visibilityFilter } = state;
-  const todos = getTodosByVisibilityFilter(state, visibilityFilter);
+  const todos = getTodosByVisibilityFilter(state);
   return { todos };
 }
-
+/* 
 const mapDispatchToProps = {
-}
+} */
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoList)
+  mapStateToProps/* ,
+  mapDispatchToProps */
+)(TodoList);

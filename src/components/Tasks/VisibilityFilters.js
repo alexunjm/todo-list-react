@@ -17,7 +17,7 @@ const VisibilityFilters = ({ activeFilter, setFilter }) => {
               "filter",
               currentFilter === activeFilter && "filter--active"
             )}
-            onClick={() => {setFilter(currentFilter)} /** waiting for setFilter handler*/}
+            onClick={() => {setFilter(currentFilter)}}
           >
             {currentFilter}
           </span>
@@ -34,13 +34,13 @@ const mapStateToProps = state => {
   return ({
     activeFilter: state.visibilityFilter.activeFilter
   })
-}
+};
 
 const mapDispatchToProps = {
   setFilter
-}
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(VisibilityFilters)
+)(VisibilityFilters);
