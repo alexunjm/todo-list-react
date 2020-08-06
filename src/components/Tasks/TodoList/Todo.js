@@ -1,10 +1,13 @@
 import React from "react";
 import cx from "classnames";
+import { connect } from 'react-redux';
 
-const Todo = ({ todo }) => (
+import { toggleTodo } from '../../../redux/actionCreators'
+
+const Todo = ({ todo, toggleTodo }) => (
   <li
     className="todo-item"
-    onClick={() => {} /** dispatches action to toggle todo */}
+    onClick={() => {toggleTodo(todo.id)} /** dispatches action to toggle todo */}
   >
     {todo && todo.completed ? "👌" : "👋"}{" "}
     <span
@@ -18,4 +21,17 @@ const Todo = ({ todo }) => (
   </li>
 );
 
-export default Todo;
+
+/***
+ * Container
+ */
+const mapStateToProps = null
+
+const mapDispatchToProps = {
+  toggleTodo
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Todo)

@@ -1,7 +1,7 @@
 import React from "react";
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import { addTodo, toggleTodo } from '../../redux/actionCreators'
+import { addTodo } from '../../redux/actionCreators';
 
 class AddTodo extends React.Component {
   constructor(props) {
@@ -51,7 +51,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  addTodo, toggleTodo
+  addTodo
 }
 
 export default connect(
