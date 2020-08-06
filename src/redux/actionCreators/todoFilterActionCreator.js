@@ -1,6 +1,6 @@
-import { todoActionType } from "../actionTypes";
+import { todoFilterActionType } from "../actionTypes";
 
 export const setFilter = (filter) => ({
-  type: todoActionType.SET_FILTER,
+  type: todoFilterActionType.SET_FILTER,
   payload: { filter },
 });

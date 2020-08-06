@@ -1,4 +1,4 @@
-import { todoActionType } from "../actionTypes";
+import { todoFilterActionType } from "../actionTypes";
 import { TODO_FILTERS } from "../../constants";
 
 const INITIAL_STATE = {
@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 
 const todoFilter = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case todoActionType.SET_FILTER: {
+    case todoFilterActionType.SET_FILTER: {
       const { filter } = action.payload;
       return {
         ...state,
