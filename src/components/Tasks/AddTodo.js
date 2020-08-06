@@ -1,9 +1,16 @@
 import React from "react";
+import { connect } from 'react-redux'
+
+import { addTodo, toggleTodo } from '../../redux/actionCreators'
 
 class AddTodo extends React.Component {
   constructor(props) {
     super(props);
     this.state = { input: "" };
+  }
+  
+  cleanInput() {
+    this.updateInput("");
   }
 
   updateInput = input => {
@@ -12,7 +19,9 @@ class AddTodo extends React.Component {
 
   handleAddTodo = () => {
     // dispatches actions to add todo
+    this.props.addTodo(this.state.input);
     // sets state back to empty string
+    this.cleanInput();
   };
 
   render() {
@@ -30,4 +39,22 @@ class AddTodo extends React.Component {
   }
 }
 
-export default AddTodo;
+
+/***
+ * Container
+ */
+const mapStateToProps = state => {
+  return ({
+    allIds: state.todos.allIds,
+    byIds: state.todos.byIds
+  })
+}
+
+const mapDispatchToProps = {
+  addTodo, toggleTodo
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddTodo)
