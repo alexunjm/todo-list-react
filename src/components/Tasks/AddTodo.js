@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from 'react-redux';
 
-import { todoActionCreators } from '../../redux/actionCreators';
+// import { todoActionCreators } from '../../redux/actionCreators';
+import { todoActionFetch } from '../../redux/actionFetch';
 
 class AddTodo extends React.Component {
   constructor(props) {
@@ -46,9 +47,10 @@ class AddTodo extends React.Component {
  */
 const mapStateToProps = null;
 
-const { addTodo } = todoActionCreators;
+// const { addTodo } = todoActionCreators;
+const { saveTodo } = todoActionFetch;
 const mapDispatchToProps = {
-  addTodo
+  addTodo: saveTodo
 };
 /*** another way to pass action creators for map reduce functions
 const mapDispatchToProps = dispatch => ({
