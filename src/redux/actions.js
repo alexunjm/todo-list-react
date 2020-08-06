@@ -1,9 +1,9 @@
-import { ADD_TODO, TOGGLE_TODO, SET_FILTER } from "./actionTypes";
+import { todoActionType } from "./actionTypes";
 
 let nextTodoId = 0;
 
 export const addTodo = content => ({
-  type: ADD_TODO,
+  type: todoActionType.ADD,
   payload: {
     id: ++nextTodoId,
     content
@@ -11,8 +11,8 @@ export const addTodo = content => ({
 });
 
 export const toggleTodo = id => ({
-  type: TOGGLE_TODO,
+  type: todoActionType.TOGGLE,
   payload: { id }
 });
 
-export const setFilter = filter => ({ type: SET_FILTER, payload: { filter } });
+export const setFilter = filter => ({ type: todoActionType.SET_FILTER, payload: { filter } });

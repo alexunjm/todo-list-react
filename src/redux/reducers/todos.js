@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO } from "../actionTypes";
+import { todoActionType } from "../actionTypes";
 
 const INITIAL_STATE = {
   allIds: [],
@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 
 export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case ADD_TODO: {
+    case todoActionType.ADD: {
       const { id, content } = action.payload;
       return {
         ...state,
@@ -21,7 +21,7 @@ export default function(state = INITIAL_STATE, action) {
         }
       };
     }
-    case TOGGLE_TODO: {
+    case todoActionType.TOGGLE: {
       const { id } = action.payload;
       return {
         ...state,
