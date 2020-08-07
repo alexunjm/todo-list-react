@@ -91,7 +91,7 @@ class SignUp extends React.Component {
           />
         ))}
         <Button btnType="Success">SignUp</Button>
-        <span onClick={this.props.showSignup}>
+        <span onClick={this.props.showLogin}>
           Have an account?
         </span>
       </form>
@@ -125,7 +125,7 @@ const { toggleSignup } = authActionCreators;
 
 const mapDispatchToProps = {
   signUpFetch,
-  showSignup: toggleSignup,
+  showLogin: toggleSignup,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

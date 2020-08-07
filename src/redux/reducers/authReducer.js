@@ -1,7 +1,12 @@
 import { authActionType } from "../actionTypes";
+import { lsManager } from "../../lsManager";
+
+const checkCurrentUser = () => {
+  return lsManager.get('user');
+}
 
 const INITIAL_STATE = {
-  user: null,
+  user: checkCurrentUser(),
   showSignup: false,
   pending: false,
   error: null,

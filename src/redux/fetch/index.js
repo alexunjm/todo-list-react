@@ -1,5 +1,16 @@
 import { login, signUp } from "./auth/fn";
 import { todoActionCreators, authActionCreators } from "../actionCreators";
+import { lsManager } from "../../lsManager";
+
+/***************************************************************
+ * Tasks
+ * *************************************************************
+ */
+
+/***
+ * Fetch Tasks from server
+ * *************************************************************
+ */
 
 const {
   fetchTasksPending,
@@ -20,6 +31,7 @@ export const fetchTasks = () => {
           throw res.error;
         }
         dispatch(fetchTasksSuccess(res.tasks));
+        
         return res.tasks;
       })
       .catch((error) => {
@@ -28,6 +40,14 @@ export const fetchTasks = () => {
   };
 };
 
+/***************************************************************
+ * Auth (login and signUp)
+ * *************************************************************
+ */
+
+ /***
+  * Login on server
+  */
 const {
   fetchAuthPending,
   fetchLoginSuccess,
@@ -38,7 +58,6 @@ const {
 export const loginFetch = (user) => {
   return (dispatch) => {
     dispatch(fetchAuthPending());
-    // login({ password: "ud3p", nickname: "udep" })
     login(user)
       .then((res) => {
         return res.json();
@@ -50,6 +69,7 @@ export const loginFetch = (user) => {
         } else {
           dispatch(fetchLoginSuccess(res.user));
         }
+        lsManager.set('user', res.user);
         return res.user;
       })
       .catch((error) => {
@@ -58,6 +78,9 @@ export const loginFetch = (user) => {
   };
 };
 
+/***
+ * SignUp on server
+ */
 export const signUpFetch = (user) => {
   return (dispatch) => {
     dispatch(fetchAuthPending());
@@ -71,7 +94,8 @@ export const signUpFetch = (user) => {
           throw res.error;
         }
         dispatch(fetchSingUpSuccess(res.user));
-        return res.tasks;
+        lsManager.set('user', res.user);
+        return res.user;
       })
       .catch((error) => {
         dispatch(fetchAuthError(error));
