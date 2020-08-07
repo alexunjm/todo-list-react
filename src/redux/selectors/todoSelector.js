@@ -12,7 +12,7 @@ const applyFor = ({ filter, statusCompleted }) =>
   (is(filter).INCOMPLETE && statusCompleted === false);
 
 export const getFilteredTodoArray = (store) => {
-  const { data /* , len */ } = store.todo;
+  const { data } = store.todo;
   const { activeFilter } = store.todoFilter;
 
   const result = Object.keys(data).reduce((acc, id) => {
@@ -25,3 +25,5 @@ export const getFilteredTodoArray = (store) => {
   }, []);
   return result;
 };
+export const getTodoListPending = state => state.todo.pending;
+export const getTodoListError = state => state.todo.error;

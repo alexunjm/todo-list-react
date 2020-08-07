@@ -3,6 +3,8 @@ import { todoActionType } from "../actionTypes";
 const INITIAL_STATE = {
   len: 0,
   data: {},
+  pending: false,
+  error: null,
 };
 
 export default function (state = INITIAL_STATE, action) {
@@ -32,6 +34,36 @@ export default function (state = INITIAL_STATE, action) {
             completed: !state.data[id].completed,
           },
         },
+      };
+    }
+    case todoActionType.FETCH_TASKS_PENDING: {
+      return {
+        ...state,
+        pending: true,
+      };
+    }
+    case todoActionType.FETCH_TASKS_SUCCESS: {
+      const tasks = action.payload;
+      return {
+        ...state,
+        pending: false,
+        data: {
+          ...state.data,
+          ...tasks.reduce(
+            (acc, task) => ({
+              ...acc,
+              [task.id]: task,
+            }),
+            {}
+          ),
+        },
+      };
+    }
+    case todoActionType.FETCH_PRODUCTS_ERROR: {
+      return {
+        ...state,
+        pending: false,
+        error: action.error,
       };
     }
     default:
