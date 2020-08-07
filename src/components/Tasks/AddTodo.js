@@ -1,18 +1,12 @@
 import React from "react";
 import { connect } from 'react-redux';
 
-import { addTodo } from '../../redux/actionCreators';
+import { todoActionCreators } from '../../redux/actionCreators';
 
 class AddTodo extends React.Component {
   constructor(props) {
     super(props);
     this.state = { input: "" };
-    // samples for test
-    [...Array(5).keys()].forEach((x, i) => {
-      console.log("AddTodo -> constructor -> x, i", x, i)
-      this.props.addTodo('test ' + (i + 1));
-    })
-
   }
 
   updateInput = input => {
@@ -47,10 +41,15 @@ class AddTodo extends React.Component {
  */
 const mapStateToProps = null;
 
+const { addTodo } = todoActionCreators;
 const mapDispatchToProps = {
   addTodo
 };
-
+/*** another way to pass action creators for map reduce functions
+const mapDispatchToProps = dispatch => ({
+  addTodo: (content) => dispatch(addTodo(content))
+});
+ */
 export default connect(
   mapStateToProps,
   mapDispatchToProps

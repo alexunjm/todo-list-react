@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { connect } from 'react-redux';
 
-import { toggleTodo } from '../../../redux/actionCreators'
+import { todoActionCreators } from '../../../redux/actionCreators'
 
 const Todo = ({ todo, toggleTodo }) => (
   <li
@@ -27,6 +27,7 @@ const Todo = ({ todo, toggleTodo }) => (
  */
 const mapStateToProps = null
 
+const { toggleTodo } = todoActionCreators;
 const mapDispatchToProps = {
   toggleTodo
 }

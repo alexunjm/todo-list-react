@@ -2,14 +2,15 @@ import React from "react";
 import { connect } from 'react-redux'
 import cx from "classnames";
 
-import { setFilter } from '../../redux/actionCreators'
-import { VISIBILITY_FILTERS } from "../../constants";
+import { todoFilterActionCreators } from '../../redux/actionCreators'
+import { TODO_FILTERS } from "../../constants";
+import { todoFilterSelector } from "../../redux/selectors";
 
 const VisibilityFilters = ({ activeFilter, setFilter }) => {
   return (
     <div className="visibility-filters">
-      {Object.keys(VISIBILITY_FILTERS).map(filterKey => {
-        const currentFilter = VISIBILITY_FILTERS[filterKey];
+      {Object.keys(TODO_FILTERS).map(filterKey => {
+        const currentFilter = TODO_FILTERS[filterKey];
         return (
           <span
             key={`visibility-filter-${currentFilter}`}
@@ -30,9 +31,11 @@ const VisibilityFilters = ({ activeFilter, setFilter }) => {
 /***
  * Container
  */
+const { setFilter } = todoFilterActionCreators;
+const { getActiveFilter } = todoFilterSelector;
 const mapStateToProps = state => {
   return ({
-    activeFilter: state.visibilityFilter.activeFilter
+    activeFilter: getActiveFilter(state)
   })
 };
 

@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  api:
+    container_name: todolist-api
+    image: node:10-alpine
+    volumes:
+      - ./:/api
+    working_dir: /api
+    depends_on:
+      - mongo
+    environment:
+      NODE_ENV: development
+      MONGODB_URI: mongo
+    ports:
+      - 80:3000
+    command: >
+      sh -c "npm i && npm run dev"
+  mongoclient:
+    container_name: todolist-dbvslzr
+    image: mongo-express
+    depends_on:
+      - mongo
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_BASICAUTH_USERNAME: 'todoer'
+      ME_CONFIG_BASICAUTH_PASSWORD: 'p4ssw0rd./'
+    ports:
+      - 8081:8081
+  mongo:
+    container_name: todolist-db
+    image: mongo
+    expose:
+      - 27017
+    volumes:
+      - ./tmp-mongo:/data/db
