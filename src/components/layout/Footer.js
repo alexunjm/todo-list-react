@@ -10,7 +10,7 @@ class Footer extends React.Component {
   render() {
     return (
       <div>
-        footer
+        {this.props.children}
       </div>
     );
   }

@@ -8,3 +8,10 @@ export const todoActionType = {
 export const todoFilterActionType = {
   SET_FILTER: "SET_FILTER",
 };
+export const authActionType = {
+  TOGGLE_SIGNUP: "TOGGLE_SIGNUP",
+  FETCH_PENDING: "FETCH_PENDING",
+  FETCH_LOGIN_SUCCESS: "FETCH_LOGIN_SUCCESS",
+  FETCH_SIGNUP_SUCCESS: "FETCH_SIGNUP_SUCCESS",
+  FETCH_ERROR: "FETCH_ERROR",
+};

@@ -59,7 +59,7 @@ export default function (state = INITIAL_STATE, action) {
         },
       };
     }
-    case todoActionType.FETCH_PRODUCTS_ERROR: {
+    case todoActionType.FETCH_TASKS_ERROR: {
       return {
         ...state,
         pending: false,

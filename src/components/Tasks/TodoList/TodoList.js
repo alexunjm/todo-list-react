@@ -2,11 +2,9 @@ import React from "react";
 import Todo from "./Todo";
 import { connect } from "react-redux";
 
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import Loader from "react-loader-spinner";
-
 import { fetchTasks } from "../../../redux/fetch";
 import { todoSelector } from "../../../redux/selectors";
+import Spinner from "../../UI/Spinner/Spinner";
 
 class TodoList extends React.Component {/* 
   constructor(props) {
@@ -29,17 +27,12 @@ class TodoList extends React.Component {/*
 
     if (this.props.pending)
       return (
-        <Loader
-          type="ThreeDots"
-          color="#AAA"
-          height={100}
-          width={100}
-        />
+        <Spinner />
       );
 
     return (
       <div className="list-wrapper">
-        {this.props.error && <span className="product-list-error">{this.props.error}</span>}
+        {this.props.error && <span className="error">{this.props.error}</span>}
         <ul className="todo-list">
           {this.props.todos && this.props.todos.length
             ? this.props.todos.map((todo, index) => {
