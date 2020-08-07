@@ -2,16 +2,16 @@ import { todoActionCreators } from "../actionCreators";
 
 const {
   fetchTasksPending,
-  fetchTasksSuccess,/* 
-  fetchTasksError, */
+  fetchTasksSuccess,
+  fetchTasksError,
 } = todoActionCreators;
 
 export const fetchTasks = () => {
   return (dispatch) => {
     dispatch(
       fetchTasksPending()
-    ); /* 
-    fetch("https://exampleapi.com/tasks")
+    ); 
+    fetch("http://localhost/api/task/sample")
       .then((res) => res.json())
       .then((res) => {
         if (res.error) {
@@ -23,7 +23,8 @@ export const fetchTasks = () => {
       .catch((error) => {
         dispatch(fetchTasksError(error));
       });
-       */
+      
+      /* 
     setTimeout(() => {
       // samples for test
       const tasks = [...Array(5).keys()].map((x, i) => {
@@ -33,9 +34,9 @@ export const fetchTasks = () => {
           completed: false,
         };
       });
-
       dispatch(fetchTasksSuccess(tasks));
       return tasks;
     }, 3000);
+     */
   };
 }

@@ -13,7 +13,7 @@ services:
       NODE_ENV: development
       MONGODB_URI: mongo
     ports:
-      - 3000:3000
+      - 80:3000
     command: >
       sh -c "npm i && npm run dev"
   mongoclient:
