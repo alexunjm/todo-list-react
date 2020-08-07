@@ -12,7 +12,10 @@ export const fetchTasks = () => {
       fetchTasksPending()
     ); 
     fetch("http://localhost/api/task/sample")
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.ok) return res.json()
+        return {error: 'Unavailable server connection'}
+      })
       .then((res) => {
         if (res.error) {
           throw res.error;
