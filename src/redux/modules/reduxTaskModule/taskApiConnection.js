@@ -16,7 +16,16 @@ const requests = {
 
   add: (task) => {
     return asyncFn({
-      promiseToWait: api.task.saveTasks(task),
+      promiseToWait: api.task.saveTask(task),
+      pendingFn: apiPending,
+      successFn: apiSuccessSave,
+      errorFn: apiError,
+    });
+  },
+
+  toggleComplete: (task) => {
+    return asyncFn({
+      promiseToWait: api.task.updateTask({id: task.id, completed: !task.completed}),
       pendingFn: apiPending,
       successFn: apiSuccessSave,
       errorFn: apiError,

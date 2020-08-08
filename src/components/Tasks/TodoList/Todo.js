@@ -3,12 +3,12 @@ import React from "react";
 import cx from "classnames";
 import { connect } from 'react-redux';
 
-import taskActionCreator from '../../../redux/modules/reduxTaskModule/taskActions/taskActionCreator'
+import taskApiConnection from '../../../redux/modules/reduxTaskModule/taskApiConnection'
 
 const Todo = ({ task, toggleComplete }) => (
   <li
     className="task-item"
-    onClick={() => {toggleComplete(task.id)} /** dispatches action to toggle task */}
+    onClick={() => {toggleComplete(task)} /** dispatches action to toggle task */}
   >
     {task && task.completed ? "👌" : "👋"}{" "}
     <span
@@ -28,9 +28,8 @@ const Todo = ({ task, toggleComplete }) => (
  */
 const mapStateToProps = null
 
-const { toggleComplete } = taskActionCreator;
 const mapDispatchToProps = {
-  toggleComplete
+  toggleComplete: taskApiConnection.toggleComplete
 }
 
 export default connect(

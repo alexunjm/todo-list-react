@@ -66,27 +66,27 @@ export default function (state = INITIAL_STATE, action) {
       };
     }
     case actionType.API.SUCCESS.UPDATE: {
-      const { id } = action.payload;
+      const { data } = action.payload;
       return {
         ...state,
         pending: false,
         data: {
           ...state.data,
-          [id]: {
-            ...action.payload,
+          [data.id]: {
+            ...data,
           },
         },
       };
     }
     case actionType.API.SUCCESS.DELETE: {
-      const { id } = action.payload;
+      const { data } = action.payload;
       return {
         ...state,
         pending: false,
         data: {
           ...state.data,
-          [id]: {
-            ...action.payload,
+          [data.id]: {
+            ...data,
           },
         },
       };
