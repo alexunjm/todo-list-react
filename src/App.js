@@ -45,7 +45,7 @@ class App extends React.Component {
  */
 const mapStateToProps = (state) => {
   return {
-    user: authSelector.getAuth(state),
+    user: authSelector.getUser(state),
     showSignUp: authSelector.isShowingSignup(state),
   };
 };
