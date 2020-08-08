@@ -2,7 +2,7 @@ import actionCreator from "./taskActions/taskActionCreator";
 import { asyncFn } from "../async";
 import api from "../../../shared/api";
 
-const { apiPending, apiSuccessList, apiSuccessSave, apiError } = actionCreator;
+const { apiPending, apiSuccessList, apiSuccessSave, apiSuccessUpdate, apiSuccessDelete, apiError } = actionCreator;
 
 const requests = {
   queryTasks: () => {
@@ -27,7 +27,7 @@ const requests = {
     return asyncFn({
       promiseToWait: api.task.updateTask({id: task.id, completed: !task.completed}),
       pendingFn: apiPending,
-      successFn: apiSuccessSave,
+      successFn: apiSuccessUpdate,
       errorFn: apiError,
     });
   },

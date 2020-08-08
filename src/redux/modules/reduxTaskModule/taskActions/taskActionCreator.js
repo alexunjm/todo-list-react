@@ -6,11 +6,6 @@ export default {
     filter,
   }),
 
-  toggleComplete: (id) => ({
-    type: actionTypes.STATE.TOGGLE.COMPLETE,
-    payload: { id },
-  }),
-
   apiPending: () => {
     return {
       type: actionTypes.API.PENDING,

@@ -1,9 +1,6 @@
 export default {
   STATE: {
     SET_FILTER: "TASK_SET-FILTER",
-    TOGGLE: {
-      COMPLETE: "TASK_STATE_TOGGLE-COMPLETE",
-    },
   },
   API: {
     PENDING: "TASK_API_PENDING",
