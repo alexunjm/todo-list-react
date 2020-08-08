@@ -5,19 +5,19 @@ import { connect } from 'react-redux';
 
 import taskActionCreator from '../../../redux/modules/reduxTaskModule/taskActions/taskActionCreator'
 
-const Todo = ({ todo, toggleComplete }) => (
+const Todo = ({ task, toggleComplete }) => (
   <li
-    className="todo-item"
-    onClick={() => {toggleComplete(todo.id)} /** dispatches action to toggle todo */}
+    className="task-item"
+    onClick={() => {toggleComplete(task.id)} /** dispatches action to toggle task */}
   >
-    {todo && todo.completed ? "👌" : "👋"}{" "}
+    {task && task.completed ? "👌" : "👋"}{" "}
     <span
       className={cx(
-        "todo-item__text",
-        todo && todo.completed && "todo-item__text--completed"
+        "task-item__text",
+        task && task.completed && "task-item__text--completed"
       )}
     >
-      {todo.content}
+      {task.content}
     </span>
   </li>
 );
