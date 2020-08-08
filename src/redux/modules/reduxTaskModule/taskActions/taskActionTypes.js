@@ -1,0 +1,18 @@
+export default {
+  STATE: {
+    SET_FILTER: "TASK_SET-FILTER",
+    TOGGLE: {
+      COMPLETE: "TASK_STATE_TOGGLE-COMPLETE",
+    },
+  },
+  API: {
+    PENDING: "TASK_API_PENDING",
+    ERROR: "TASK_API_ERROR",
+    SUCCESS: {
+      LIST: "TASK_API_SUCCESS_LIST",
+      SAVE: "TASK_API_SUCCESS_SAVE",
+      UPDATE: "TASK_API_SUCCESS_UPDATE",
+      DELETE: "TASK_API_SUCCESS_DELETE",
+    },
+  },
+};

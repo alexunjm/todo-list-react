@@ -1,4 +1,4 @@
-export const TODO_FILTERS = {
+export default {
   ALL: "all",
   COMPLETED: "completed",
   INCOMPLETE: "incomplete"
