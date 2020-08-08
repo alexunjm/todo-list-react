@@ -12,7 +12,7 @@ class TodoList extends React.Component {/*
     this.shouldComponentRender = this.shouldComponentRender.bind(this);
   }
  */
-  componentWillMount() {
+  componentDidMount() {
     const { queryTasks } = this.props;
     queryTasks();
   }
