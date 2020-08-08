@@ -11,7 +11,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Tasks from "./components/Tasks";
 
-import { authSelector } from "./redux/selectors";
+import authSelector from "./redux/modules/reduxAuthModule/authSelector";
 
 class App extends React.Component {
   constructor(props) {
@@ -49,8 +49,8 @@ class App extends React.Component {
 const { getLoggedUser, isShowingSignup } = authSelector;
 const mapStateToProps = (state) => {
   return {
-    user: getLoggedUser(state),
-    showSignUp: isShowingSignup(state),
+    user: authSelector.getAuth(state),
+    showSignUp: authSelector.isShowingSignup(state),
   };
 };
 /* 

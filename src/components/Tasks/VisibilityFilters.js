@@ -2,15 +2,15 @@ import React from "react";
 import { connect } from 'react-redux'
 import cx from "classnames";
 
-import { todoFilterActionCreators } from '../../redux/actionCreators'
-import { TODO_FILTERS } from "../../constants";
-import { todoFilterSelector } from "../../redux/selectors";
+import taskActionCreator from '../../redux/modules/reduxTaskModule/taskActions/taskActionCreator'
+import FILTERS from "../../redux/modules/reduxTaskModule/taskConstantFilter";
+import taskSelector from "../../redux/modules/reduxTaskModule/taskSelector";
 
 const VisibilityFilters = ({ activeFilter, setFilter }) => {
   return (
     <div className="visibility-filters">
-      {Object.keys(TODO_FILTERS).map(filterKey => {
-        const currentFilter = TODO_FILTERS[filterKey];
+      {Object.keys(FILTERS).map(filterKey => {
+        const currentFilter = FILTERS[filterKey];
         return (
           <span
             key={`visibility-filter-${currentFilter}`}
@@ -31,16 +31,14 @@ const VisibilityFilters = ({ activeFilter, setFilter }) => {
 /***
  * Container
  */
-const { setFilter } = todoFilterActionCreators;
-const { getActiveFilter } = todoFilterSelector;
 const mapStateToProps = state => {
   return ({
-    activeFilter: getActiveFilter(state)
+    activeFilter: taskSelector.getActiveFilter(state)
   })
 };
 
 const mapDispatchToProps = {
-  setFilter
+  setFilter: taskActionCreator.setFilter()
 };
 
 export default connect(

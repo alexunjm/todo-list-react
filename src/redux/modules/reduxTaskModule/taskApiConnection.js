@@ -1,18 +1,31 @@
-import taskActionCreators from "./taskActions/taskActionCreator";
+import actionCreator from "./taskActions/taskActionCreator";
 import { asyncFn } from "../async";
 import api from "../../../shared/api";
 
 const {
   apiPending,
   apiSuccessList,
+  apiSuccessSave,
   apiError,
-} = taskActionCreators;
+} = actionCreator;
 
-export const queryTasks = () => {
-  return asyncFn({
-    promiseToWait: api.taskService.listTasks(),
-    pendingFn: apiPending,
-    successFn: apiSuccessList,
-    errorFn: apiError,
-  })
+const requests = {
+  queryTasks: () => {
+    return asyncFn({
+      promiseToWait: api.task.listTasks(),
+      pendingFn: actionCreator.apiPending,
+      successFn: actionCreator.apiSuccessList,
+      errorFn: actionCreator.apiError,
+    });
+  },
+  add: (task) => {
+    return asyncFn({
+      promiseToWait: api.task.saveTasks(task),
+      pendingFn: actionCreator.apiPending,
+      successFn: actionCreator.apiSuccessSave,
+      errorFn: actionCreator.apiError,
+    });
+  },
 };
+
+export default requests

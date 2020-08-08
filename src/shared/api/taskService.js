@@ -1,9 +1,21 @@
-import { uriBase, buildRequestOptions } from './config'
+import { uriBase, buildRequestOptions } from "./config";
 
-export const listTasks = () => {
-  const url = `${uriBase}/task/sample"`;
-  const requestOptions = buildRequestOptions();
-  return fetch(url, requestOptions);
+export default {
+  listTasks: () => {
+    const url = `${uriBase}/task/sample"`;
+    const requestOptions = buildRequestOptions();
+    return fetch(url, requestOptions);
+  },
+
+  saveTasks: (task) => {
+    const url = `${uriBase}/task/save"`;
+    const requestOptions = buildRequestOptions({
+      method: "POST",
+      raw: JSON.stringify({ task }),
+      customHeaders: { "Content-Type": "application/json" },
+    });
+    return fetch(url, requestOptions);
+  },
 };
 
 /***

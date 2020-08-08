@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import Input from "../UI/Input/Input";
-import Button from "../UI/Button/Button";
-import Spinner from "../UI/Spinner/Spinner";
+import Input from "../../shared/ui-components/Input/Input";
+import Button from "../../shared/ui-components/Button/Button";
+import Spinner from "../../shared/ui-components/Spinner/Spinner";
 
-import { loginFetch } from "../../redux/fetch";
-import { authSelector } from "../../redux/selectors";
-import { authActionCreators } from "../../redux/actionCreators";
+import authApiConnection from "../../redux/modules/reduxAuthModule/authApiConnection";
+import authSelector from "../../redux/modules/reduxAuthModule/authSelector";
+import authActionCreator from "../../redux/modules/reduxAuthModule/authActions/authActionCreator";
 
 class Login extends React.Component {
   constructor(props) {
@@ -56,7 +56,7 @@ class Login extends React.Component {
       password: this.state.password,
     };
     console.log("Login -> formSubmitFn -> user", user);
-    this.props.loginFetch(user);
+    this.props.login(user);
   };
 
   render() {
@@ -107,19 +107,16 @@ class Login extends React.Component {
 /***
  * Container
  */
-const { getAuth } = authSelector;
 
 const mapStateToProps = (state) => {
   return {
-    auth: getAuth(state),
+    auth: authSelector.getAuth(state),
   };
 };
 
-const { toggleSignup } = authActionCreators;
-
 const mapDispatchToProps = {
-  loginFetch,
-  showSignup: toggleSignup,
+  login: authApiConnection.login,
+  showSignup: authActionCreator.toggleShowSignup,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

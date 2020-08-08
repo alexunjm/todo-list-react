@@ -1,13 +1,14 @@
 import React from "react";
+// ejemplo classnames
 import cx from "classnames";
 import { connect } from 'react-redux';
 
-import { todoActionCreators } from '../../../redux/actionCreators'
+import taskActionCreator from '../../../redux/modules/reduxTaskModule/taskActions/taskActionCreator'
 
-const Todo = ({ todo, toggleTodo }) => (
+const Todo = ({ todo, toggleComplete }) => (
   <li
     className="todo-item"
-    onClick={() => {toggleTodo(todo.id)} /** dispatches action to toggle todo */}
+    onClick={() => {toggleComplete(todo.id)} /** dispatches action to toggle todo */}
   >
     {todo && todo.completed ? "👌" : "👋"}{" "}
     <span
@@ -27,9 +28,9 @@ const Todo = ({ todo, toggleTodo }) => (
  */
 const mapStateToProps = null
 
-const { toggleTodo } = todoActionCreators;
+const { toggleComplete } = taskActionCreator;
 const mapDispatchToProps = {
-  toggleTodo
+  toggleComplete
 }
 
 export default connect(

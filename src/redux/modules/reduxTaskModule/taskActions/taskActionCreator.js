@@ -1,52 +1,56 @@
-import actionTypes from './taskActionTypes';
+import actionTypes from "./taskActionTypes";
 
-export const setFilter = (filter) => ({
-  type: actionTypes.STATE.SET_FILTER,
-  filter,
-});
+const actionCreators = {
+  setFilter: (filter) => ({
+    type: actionTypes.STATE.SET_FILTER,
+    filter,
+  }),
 
-export const toggleComplete = (id) => ({
-  type: actionTypes.STATE.TOGGLE.COMPLETE,
-  payload: { id },
-});
+  toggleComplete: (id) => ({
+    type: actionTypes.STATE.TOGGLE.COMPLETE,
+    payload: { id },
+  }),
 
-export const apiPending = () => {
-  return {
-    type: actionTypes.API.PENDING,
-  };
+  apiPending: () => {
+    return {
+      type: actionTypes.API.PENDING,
+    };
+  },
+
+  apiSuccessList: (payload) => {
+    return {
+      type: actionTypes.API.SUCCESS.LIST,
+      payload,
+    };
+  },
+
+  apiSuccessSave: (payload) => {
+    return {
+      type: actionTypes.API.SUCCESS.SAVE,
+      payload,
+    };
+  },
+
+  apiSuccessUpdate: (payload) => {
+    return {
+      type: actionTypes.API.SUCCESS.UPDATE,
+      payload,
+    };
+  },
+
+  apiSuccessDelete: (payload) => {
+    return {
+      type: actionTypes.API.SUCCESS.DELETE,
+      payload,
+    };
+  },
+
+  apiError: (error) => {
+    return {
+      type: actionTypes.API.ERROR,
+      error,
+    };
+  },
 };
 
-export const apiSuccessList = (payload) => {
-  return {
-    type: actionTypes.API.SUCCESS.LIST,
-    payload,
-  };
-};
-
-export const apiSuccessSave = (payload) => {
-  return {
-    type: actionTypes.API.SUCCESS.SAVE,
-    payload,
-  };
-};
-
-export const apiSuccessUpdate = (payload) => {
-  return {
-    type: actionTypes.API.SUCCESS.UPDATE,
-    payload,
-  };
-};
-
-export const apiSuccessDelete = (payload) => {
-  return {
-    type: actionTypes.API.SUCCESS.DELETE,
-    payload,
-  };
-};
-
-export const apiError = (error) => {
-  return {
-    type: actionTypes.API.ERROR,
-    error,
-  };
-};
+export default actionCreators;

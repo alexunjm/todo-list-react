@@ -1,25 +1,26 @@
 import { uriBase, buildRequestOptions } from "./config";
 
-export const login = (user) => {
-  const url = `${uriBase}/user/login"`;
-  const requestOptions = buildRequestOptions({
-    method: "POST",
-    raw: JSON.stringify({ user }),
-    customHeaders: { "Content-Type": "application/json" },
-  });
-  return fetch(url, requestOptions);
-};
+export default {
+  login: (user) => {
+    const url = `${uriBase}/user/login"`;
+    const requestOptions = buildRequestOptions({
+      method: "POST",
+      raw: JSON.stringify({ user }),
+      customHeaders: { "Content-Type": "application/json" },
+    });
+    return fetch(url, requestOptions);
+  },
 
-export const signUp = (user) => {
-  const url = `${uriBase}/user/sign-up"`;
-  const requestOptions = buildRequestOptions({
-    method: "POST",
-    raw: JSON.stringify({ user }),
-    customHeaders: { "Content-Type": "application/json" },
-  });
-  return fetch(url, requestOptions);
+  signUp: (user) => {
+    const url = `${uriBase}/user/sign-up"`;
+    const requestOptions = buildRequestOptions({
+      method: "POST",
+      raw: JSON.stringify({ user }),
+      customHeaders: { "Content-Type": "application/json" },
+    });
+    return fetch(url, requestOptions);
+  },
 };
-
 /***
  * Examples
  *

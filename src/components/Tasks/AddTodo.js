@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 
-import { todoActionCreators } from '../../redux/actionCreators';
+import taskApiConnection from "../../redux/modules/reduxTaskModule/taskApiConnection";
 
 class AddTodo extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class AddTodo extends React.Component {
 
   handleAddTodo = () => {
     // dispatches actions to add todo
-    this.props.addTodo(this.state.input);
+    this.props.addTask(this.state.input);
     // sets state back to empty string
     this.updateInput("");
   };
@@ -41,15 +41,10 @@ class AddTodo extends React.Component {
  */
 const mapStateToProps = null;
 
-const { addTodo } = todoActionCreators;
 const mapDispatchToProps = {
-  addTodo
+  addTask: taskApiConnection.add
 };
-/*** another way to pass action creators for map reduce functions
-const mapDispatchToProps = dispatch => ({
-  addTodo: (content) => dispatch(addTodo(content))
-});
- */
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

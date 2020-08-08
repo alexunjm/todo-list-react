@@ -1,2 +1,7 @@
-export const isShowingSignup = (store) => store.auth.showSignup;
-export const getAuth = (store) => store.auth;
+
+const selectors = {
+  isShowingSignup: (store) => store.auth.showSignup,
+  getAuth: (store) => store.auth,
+}
+
+export default selectors;

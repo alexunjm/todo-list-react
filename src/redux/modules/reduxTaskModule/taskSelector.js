@@ -11,20 +11,24 @@ const applyFor = ({ filter, statusCompleted }) =>
   (is(filter).COMPLETED && statusCompleted === true) ||
   (is(filter).INCOMPLETE && statusCompleted === false);
 
-export const getFilteredTodoArray = (store) => {
-  const { data } = store.task;
-  const { activeFilter } = store.todoFilter;
+const selectors = {
+  getFilteredTasks: (store) => {
+    const { data } = store.task;
+    const { activeFilter } = store.todoFilter;
 
-  const result = Object.keys(data).reduce((acc, id) => {
-    return applyFor({
-      filter: activeFilter,
-      statusCompleted: data[id].completed,
-    })
-      ? [...acc, { ...data[id], id }]
-      : acc;
-  }, []);
-  return result;
+    const result = Object.keys(data).reduce((acc, id) => {
+      return applyFor({
+        filter: activeFilter,
+        statusCompleted: data[id].completed,
+      })
+        ? [...acc, { ...data[id], id }]
+        : acc;
+    }, []);
+    return result;
+  },
+  getActiveFilter: (store) => store.task.activeFilter,
+  isApiPending: (state) => state.task.pending,
+  isApiError: (state) => state.task.error,
 };
-export const getActiveFilter = store => store.task.activeFilter;
-export const getTodoListPending = state => state.task.pending;
-export const getTodoListError = state => state.task.error;
+
+export default selectors;

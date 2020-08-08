@@ -2,9 +2,9 @@ import React from "react";
 import Todo from "./Todo";
 import { connect } from "react-redux";
 
-import { fetchTasks } from "../../../redux/fetch";
-import { todoSelector } from "../../../redux/selectors";
-import Spinner from "../../UI/Spinner/Spinner";
+import taskApiConnection from "../../../redux/modules/reduxTaskModule/taskApiConnection";
+import taskSelector from "../../../redux/modules/reduxTaskModule/taskSelector";
+import Spinner from "../../../shared/ui-components/Spinner/Spinner";
 
 class TodoList extends React.Component {/* 
   constructor(props) {
@@ -13,8 +13,8 @@ class TodoList extends React.Component {/*
   }
  */
   componentWillMount() {
-    const { fetchTasks } = this.props;
-    fetchTasks();
+    const { queryTasks } = this.props;
+    queryTasks();
   }
 /* 
   shouldComponentRender() {
@@ -49,21 +49,21 @@ class TodoList extends React.Component {/*
  * Container
  */
 const {
-  getTodoListPending,
-  getFilteredTodoArray,
-  getTodoListError,
-} = todoSelector;
+  getFilteredTasks,
+  isApiPending,
+  isApiError,
+} = taskSelector;
 
 const mapStateToProps = (state) => {
   return {
-    todos: getFilteredTodoArray(state),
-    pending: getTodoListPending(state),
-    error: getTodoListError(state),
+    tasks: getFilteredTasks(state),
+    pending: isApiPending(state),
+    error: isApiError(state),
   };
 };
 
 const mapDispatchToProps = {
-  fetchTasks,
+  queryTasks: taskApiConnection.queryTasks,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

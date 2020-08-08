@@ -1,5 +1,5 @@
-import actionType from "./authActionTypes";
-import { lsManager } from "../../../lsManager";
+import actionType from "./authActions/authActionTypes";
+import { lsManager } from "../../../shared/storage";
 
 const checkCurrentUser = () => lsManager.get('user');
 
