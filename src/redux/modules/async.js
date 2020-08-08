@@ -13,20 +13,33 @@ export const asyncFn = ({
   return (dispatch) => {
     dispatch(pendingFn());
     promiseToWait
-    .then((httpResponse) => {
-      return httpResponse.json();
-    })
-    .then((body) => {
-      if (body.errors) {
-        const errors = Object.keys(body.errors).map(key => key + ' ' + body.errors[key]);
-        dispatch(errorFn(errors.join('; ')));
-      } else {
-        dispatch(successFn(body));
-      }
-      return body;
-    })
-    .catch((error) => {
-      dispatch(errorFn("Unavailable server connection"));
-    });
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        if (res.status === 422) {
+          return res.json();
+        }
+        if (res.status === 401) {
+          return {errors: {action: 'no authorized'}}
+        }
+        console.log("http response no controlled", res);
+        return Promise.reject();
+      })
+      .then((body) => {
+        if (body.errors) {
+          const errors = Object.keys(body.errors).map(
+            (key) => key + " " + body.errors[key]
+          );
+          dispatch(errorFn(errors.join("; ")));
+        } else {
+          dispatch(successFn(body));
+        }
+        return body;
+      })
+      .catch((error) => {
+        console.log("error", error);
+        dispatch(errorFn("Unavailable server connection"));
+      });
   };
 };
