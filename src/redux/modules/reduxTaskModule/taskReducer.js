@@ -36,7 +36,7 @@ export default function (state = INITIAL_STATE, action) {
       };
     }
     case actionType.API.SUCCESS.LIST: {
-      const tasks = action.payload;
+      const {tasks} = action.payload;
       return {
         ...state,
         pending: false,
