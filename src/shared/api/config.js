@@ -1,3 +1,5 @@
+import {lsManager} from '../storage'
+
 const buildHeaders = (customHeaders) => {
   var myHeaders = new Headers();
   for (const name in customHeaders) {
@@ -6,6 +8,12 @@ const buildHeaders = (customHeaders) => {
 
       myHeaders.append(name, value);
     }
+  }
+  const {user} = lsManager.get('user');
+  console.log("buildHeaders -> user", user)
+  if (user && user.token) {
+    myHeaders.append("Authorization", `Token ${user.token}`);
+
   }
   return myHeaders;
 };
