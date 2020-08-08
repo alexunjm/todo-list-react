@@ -60,7 +60,7 @@ router.post("/create", auth.required, function (req, res, next) {
         return res.sendStatus(401);
       }
 
-      var task = new Task(req.body.task);
+      var task = new Task({name: req.body.task});
 
       task.owner = user;
 
@@ -118,18 +118,6 @@ router.delete("/delete/:id", auth.required, function (req, res, next) {
   return req.task.remove().then(function () {
     return res.sendStatus(204);
   });
-});
-
-router.get("/sample", auth.optional, function (req, res, next) {
-  const tasks = [...Array(5).keys()].map((x, i) => {
-    return {
-      id: i + 1,
-      content: "test " + (i + 1),
-      completed: false,
-      fromServer: true,
-    };
-  });
-  res.json({ tasks });
 });
 
 module.exports = router;

@@ -2,7 +2,7 @@ import { uriBase, buildRequestOptions } from "./config";
 
 export default {
   listTasks: () => {
-    const url = `${uriBase}/task/sample`;
+    const url = `${uriBase}/task/all`;
     const requestOptions = buildRequestOptions({
       customHeaders: { "Content-Type": "application/json" },
     });

@@ -36,13 +36,13 @@ export default function (state = INITIAL_STATE, action) {
       };
     }
     case actionType.API.SUCCESS.LIST: {
-      const {tasks} = action.payload;
+      const {data} = action.payload;
       return {
         ...state,
         pending: false,
         data: {
           ...state.data,
-          ...tasks.reduce(
+          ...data.reduce(
             (acc, task) => ({
               ...acc,
               [task.id]: task,
@@ -53,13 +53,14 @@ export default function (state = INITIAL_STATE, action) {
       };
     }
     case actionType.API.SUCCESS.SAVE: {
-      const { id } = action.payload;
+      const { data } = action.payload;
       return {
         ...state,
+        pending: false,
         data: {
           ...state.data,
-          [id]: {
-            ...action.payload,
+          [data.id]: {
+            ...data,
           },
         },
       };
@@ -68,6 +69,7 @@ export default function (state = INITIAL_STATE, action) {
       const { id } = action.payload;
       return {
         ...state,
+        pending: false,
         data: {
           ...state.data,
           [id]: {
@@ -80,6 +82,7 @@ export default function (state = INITIAL_STATE, action) {
       const { id } = action.payload;
       return {
         ...state,
+        pending: false,
         data: {
           ...state.data,
           [id]: {
