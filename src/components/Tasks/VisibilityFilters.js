@@ -38,7 +38,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  setFilter: taskActionCreator.setFilter()
+  setFilter: taskActionCreator.setFilter
 };
 
 export default connect(
