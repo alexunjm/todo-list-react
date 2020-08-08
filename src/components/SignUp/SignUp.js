@@ -122,7 +122,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   signUp: authApiConnection.signUp,
-  showLogin: authActionCreator.toggleSignup,
+  showLogin: authActionCreator.toggleShowSignup,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
