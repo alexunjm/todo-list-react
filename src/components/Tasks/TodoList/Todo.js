@@ -17,7 +17,7 @@ const Todo = ({ task, toggleComplete }) => (
         task && task.completed && "task-item__text--completed"
       )}
     >
-      {task.content}
+      {task.name}
     </span>
   </li>
 );
