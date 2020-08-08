@@ -29,6 +29,7 @@ export default function (state = INITIAL_STATE, action) {
     }
     case actionType.API.SUCCESS.LOGIN: {
       const user = action.payload;
+      lsManager.set('user', user);
       return {
         ...state,
         pending: false,
@@ -37,6 +38,7 @@ export default function (state = INITIAL_STATE, action) {
     }
     case actionType.API.SUCCESS.SIGNUP: {
       const user = action.payload;
+      lsManager.set('user', user);
       return {
         ...state,
         pending: false,
