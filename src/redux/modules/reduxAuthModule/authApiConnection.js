@@ -12,7 +12,7 @@ const {
 export default {
   login: (user) => {
     return asyncFn({
-      promiseToWait: api.authService.login(user),
+      promiseToWait: api.auth.login(user),
       pendingFn: apiPending,
       successFn: apiSuccessLogin,
       errorFn: apiError,
@@ -21,7 +21,7 @@ export default {
 
   signUp: (user) => {
     return asyncFn({
-      promiseToWait: api.authService.signUp(user),
+      promiseToWait: api.auth.signUp(user),
       pendingFn: apiPending,
       successFn: apiSuccessSingUp,
       errorFn: apiError,
