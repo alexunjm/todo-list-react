@@ -1,22 +1,23 @@
 import React from "react";
+// ejemplo classnames
 import cx from "classnames";
 import { connect } from 'react-redux';
 
-import { todoActionCreators } from '../../../redux/actionCreators'
+import taskApiConnection from '../../../redux/modules/reduxTaskModule/taskApiConnection'
 
-const Todo = ({ todo, toggleTodo }) => (
+const Todo = ({ task, toggleComplete }) => (
   <li
-    className="todo-item"
-    onClick={() => {toggleTodo(todo.id)} /** dispatches action to toggle todo */}
+    className="task-item"
+    onClick={() => {toggleComplete(task)} /** dispatches action to toggle task */}
   >
-    {todo && todo.completed ? "👌" : "👋"}{" "}
+    {task && task.completed ? "👌" : "👋"}{" "}
     <span
       className={cx(
-        "todo-item__text",
-        todo && todo.completed && "todo-item__text--completed"
+        "task-item__text",
+        task && task.completed && "task-item__text--completed"
       )}
     >
-      {todo.content}
+      {task.name}
     </span>
   </li>
 );
@@ -27,9 +28,8 @@ const Todo = ({ todo, toggleTodo }) => (
  */
 const mapStateToProps = null
 
-const { toggleTodo } = todoActionCreators;
 const mapDispatchToProps = {
-  toggleTodo
+  toggleComplete: taskApiConnection.toggleComplete
 }
 
 export default connect(

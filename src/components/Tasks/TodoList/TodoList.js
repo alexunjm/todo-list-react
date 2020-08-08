@@ -2,26 +2,15 @@ import React from "react";
 import Todo from "./Todo";
 import { connect } from "react-redux";
 
-import { fetchTasks } from "../../../redux/fetch";
-import { todoSelector } from "../../../redux/selectors";
-import Spinner from "../../UI/Spinner/Spinner";
+import taskApiConnection from "../../../redux/modules/reduxTaskModule/taskApiConnection";
+import taskSelector from "../../../redux/modules/reduxTaskModule/taskSelector";
+import Spinner from "../../../shared/ui-components/Spinner/Spinner";
 
-class TodoList extends React.Component {/* 
-  constructor(props) {
-    super(props);
-    this.shouldComponentRender = this.shouldComponentRender.bind(this);
+class TodoList extends React.Component {
+  
+  componentDidMount() {
+    this.props.queryTasks();
   }
- */
-  componentWillMount() {
-    const { fetchTasks } = this.props;
-    fetchTasks();
-  }
-/* 
-  shouldComponentRender() {
-    if (this.props.pending === false) return false;
-    // more tests
-    return true;
-  } */
 
   render() {
 
@@ -34,9 +23,9 @@ class TodoList extends React.Component {/*
       <div className="list-wrapper">
         {this.props.error && <span className="error">{this.props.error}</span>}
         <ul className="todo-list">
-          {this.props.todos && this.props.todos.length
-            ? this.props.todos.map((todo, index) => {
-                return <Todo key={`todo-${todo.id}`} todo={todo} />;
+          {this.props.tasks && this.props.tasks.length
+            ? this.props.tasks.map((task, index) => {
+                return <Todo key={`task-${task.id}`} task={task} />;
               })
             : "No todos to show"}
         </ul>
@@ -49,21 +38,21 @@ class TodoList extends React.Component {/*
  * Container
  */
 const {
-  getTodoListPending,
-  getFilteredTodoArray,
-  getTodoListError,
-} = todoSelector;
+  getFilteredTasks,
+  isApiPending,
+  isApiError,
+} = taskSelector;
 
 const mapStateToProps = (state) => {
   return {
-    todos: getFilteredTodoArray(state),
-    pending: getTodoListPending(state),
-    error: getTodoListError(state),
+    tasks: getFilteredTasks(state),
+    pending: isApiPending(state),
+    error: isApiError(state),
   };
 };
 
 const mapDispatchToProps = {
-  fetchTasks,
+  queryTasks: taskApiConnection.queryTasks,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

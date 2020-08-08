@@ -1,1 +1,0 @@
-export const getActiveFilter = store => store.todoFilter.activeFilter;

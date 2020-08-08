@@ -1,9 +1,7 @@
-import { authActionType } from "../actionTypes";
-import { lsManager } from "../../lsManager";
+import actionType from "./authActions/authActionTypes";
+import { lsManager } from "../../../shared/storage";
 
-const checkCurrentUser = () => {
-  return lsManager.get('user');
-}
+const checkCurrentUser = () => lsManager.get('user');
 
 const INITIAL_STATE = {
   user: checkCurrentUser(),
@@ -14,7 +12,7 @@ const INITIAL_STATE = {
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
-    case authActionType.TOGGLE_SIGNUP: {
+    case actionType.STATE.TOGGLE.SHOW_SIGNUP: {
       return {
         ...state,
         error: null,
@@ -22,30 +20,32 @@ export default function (state = INITIAL_STATE, action) {
         showSignup: !state.showSignup
       };
     }
-    case authActionType.FETCH_PENDING: {
+    case actionType.API.PENDING: {
       return {
         ...state,
         error: null,
         pending: true,
       };
     }
-    case authActionType.FETCH_LOGIN_SUCCESS: {
+    case actionType.API.SUCCESS.LOGIN: {
       const user = action.payload;
+      lsManager.set('user', user);
       return {
         ...state,
         pending: false,
         user,
       };
     }
-    case authActionType.FETCH_SIGNUP_SUCCESS: {
+    case actionType.API.SUCCESS.SIGNUP: {
       const user = action.payload;
+      lsManager.set('user', user);
       return {
         ...state,
         pending: false,
         user,
       };
     }
-    case authActionType.FETCH_ERROR: {
+    case actionType.API.ERROR: {
       return {
         ...state,
         pending: false,

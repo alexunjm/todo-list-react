@@ -1,34 +1,26 @@
-export const login = (user) => {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+import { uriBase, buildRequestOptions } from "./config";
 
-  var raw = JSON.stringify({ user });
+export default {
+  login: (user) => {
+    const url = `${uriBase}/user/login`;
+    const requestOptions = buildRequestOptions({
+      method: "POST",
+      raw: JSON.stringify({ user }),
+      customHeaders: { "Content-Type": "application/json" },
+    });
+    return fetch(url, requestOptions);
+  },
 
-  var requestOptions = {
-    method: "POST",
-    headers: myHeaders,
-    body: raw,
-    redirect: "follow",
-  };
-
-  return fetch("http://localhost/api/user/login", requestOptions);
+  signUp: (user) => {
+    const url = `${uriBase}/user/sign-up`;
+    const requestOptions = buildRequestOptions({
+      method: "POST",
+      raw: JSON.stringify({ user }),
+      customHeaders: { "Content-Type": "application/json" },
+    });
+    return fetch(url, requestOptions);
+  },
 };
-export const signUp = (user) => {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-
-  var raw = JSON.stringify({ user });
-
-  var requestOptions = {
-    method: "POST",
-    headers: myHeaders,
-    body: raw,
-    redirect: "follow",
-  };
-
-  return fetch("http://localhost/api/user/sign-up", requestOptions);
-};
-
 /***
  * Examples
  *
