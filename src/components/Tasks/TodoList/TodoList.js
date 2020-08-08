@@ -6,22 +6,11 @@ import taskApiConnection from "../../../redux/modules/reduxTaskModule/taskApiCon
 import taskSelector from "../../../redux/modules/reduxTaskModule/taskSelector";
 import Spinner from "../../../shared/ui-components/Spinner/Spinner";
 
-class TodoList extends React.Component {/* 
-  constructor(props) {
-    super(props);
-    this.shouldComponentRender = this.shouldComponentRender.bind(this);
-  }
- */
+class TodoList extends React.Component {
+  
   componentDidMount() {
-    const { queryTasks } = this.props;
-    queryTasks();
+    this.props.queryTasks();
   }
-/* 
-  shouldComponentRender() {
-    if (this.props.pending === false) return false;
-    // more tests
-    return true;
-  } */
 
   render() {
 
@@ -34,9 +23,9 @@ class TodoList extends React.Component {/*
       <div className="list-wrapper">
         {this.props.error && <span className="error">{this.props.error}</span>}
         <ul className="todo-list">
-          {this.props.todos && this.props.todos.length
-            ? this.props.todos.map((todo, index) => {
-                return <Todo key={`todo-${todo.id}`} todo={todo} />;
+          {this.props.tasks && this.props.tasks.length
+            ? this.props.tasks.map((task, index) => {
+                return <Todo key={`task-${task.id}`} task={task} />;
               })
             : "No todos to show"}
         </ul>
