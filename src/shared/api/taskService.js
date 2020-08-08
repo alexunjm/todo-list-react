@@ -3,7 +3,7 @@ import { uriBase, buildRequestOptions } from "./config";
 export default {
   listTasks: () => {
     const url = `${uriBase}/task/sample"`;
-    const requestOptions = buildRequestOptions();
+    const requestOptions = buildRequestOptions({});
     return fetch(url, requestOptions);
   },
 
