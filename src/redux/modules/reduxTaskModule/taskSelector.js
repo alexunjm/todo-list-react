@@ -14,7 +14,7 @@ const applyFor = ({ filter, statusCompleted }) =>
 const selectors = {
   getFilteredTasks: (store) => {
     const { data } = store.task;
-    const { activeFilter } = store.todoFilter;
+    const { activeFilter } = store.task;
 
     const result = Object.keys(data).reduce((acc, id) => {
       return applyFor({
