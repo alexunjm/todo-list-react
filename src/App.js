@@ -14,9 +14,6 @@ import Tasks from "./components/Tasks";
 import authSelector from "./redux/modules/reduxAuthModule/authSelector";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const HomeComp = (
       <div className="Home">
@@ -46,7 +43,6 @@ class App extends React.Component {
 /***
  * Container
  */
-const { getLoggedUser, isShowingSignup } = authSelector;
 const mapStateToProps = (state) => {
   return {
     user: authSelector.getAuth(state),

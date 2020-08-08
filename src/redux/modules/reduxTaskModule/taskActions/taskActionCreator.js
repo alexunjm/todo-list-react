@@ -1,6 +1,6 @@
 import actionTypes from "./taskActionTypes";
 
-const actionCreators = {
+export default {
   setFilter: (filter) => ({
     type: actionTypes.STATE.SET_FILTER,
     filter,
@@ -52,5 +52,3 @@ const actionCreators = {
     };
   },
 };
-
-export default actionCreators;
