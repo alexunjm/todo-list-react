@@ -9,16 +9,16 @@ const buildHeaders = (customHeaders) => {
   }
   return myHeaders;
 };
-
+/* 
 const headersSample = {
   Authorization:
     "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMTEzODMxMDIyZGVhNTcwMGExNTg3ZCIsIm5pY2tuYW1lIjoiYWxleHVuam0iLCJleHAiOjE2MDAxOTYxOTYsImlhdCI6MTU5NTAxMjE5Nn0.Fqn_ivYbArZIiCf7Jn66C9U5u3V4GC2rLb608Gf8CfY",
-};
+}; */
 
 export const buildRequestOptions = ({
   method = "GET",
-  raw = "",
-  customHeaders = headersSample,
+  raw = null,
+  customHeaders = {/* ...headersSample */},
 }) => {
   var myHeaders = buildHeaders(customHeaders);
 
@@ -32,4 +32,4 @@ export const buildRequestOptions = ({
   return requestOptions;
 };
 
-export const uriBase = "http://localhost:3000/api";
+export const uriBase = "http://localhost/api";

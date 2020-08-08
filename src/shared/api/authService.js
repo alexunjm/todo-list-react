@@ -2,7 +2,7 @@ import { uriBase, buildRequestOptions } from "./config";
 
 export default {
   login: (user) => {
-    const url = `${uriBase}/user/login"`;
+    const url = `${uriBase}/user/login`;
     const requestOptions = buildRequestOptions({
       method: "POST",
       raw: JSON.stringify({ user }),
@@ -12,7 +12,7 @@ export default {
   },
 
   signUp: (user) => {
-    const url = `${uriBase}/user/sign-up"`;
+    const url = `${uriBase}/user/sign-up`;
     const requestOptions = buildRequestOptions({
       method: "POST",
       raw: JSON.stringify({ user }),
