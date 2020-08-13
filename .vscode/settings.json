@@ -3,6 +3,10 @@
         {
             "name": "feature/refactoring-redux",
             "base": "develop"
+        },
+        {
+            "name": "feature/tailwind-css",
+            "base": "develop"
         }
     ]
 }
