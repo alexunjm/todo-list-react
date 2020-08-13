@@ -33,4 +33,4 @@ services:
     expose:
       - 27017
     volumes:
-      - ./tmp-mongo:/data/db
+      - ~/dev/environment/mongo-storage:/data/db
