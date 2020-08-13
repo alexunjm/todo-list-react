@@ -1,0 +1,5 @@
+@import "./tailwind.css";
+
+/* components.css */
+@import "./custom/components/Button.css";
+@import "./custom/components/Card.css";

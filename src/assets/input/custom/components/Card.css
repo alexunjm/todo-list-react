@@ -1,0 +1,6 @@
+.card {
+  @apply p-4;
+  @apply bg-white;
+  @apply shadow;
+  @apply rounded;
+}
