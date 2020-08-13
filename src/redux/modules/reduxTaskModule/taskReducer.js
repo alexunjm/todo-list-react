@@ -16,19 +16,6 @@ export default function (state = INITIAL_STATE, action) {
         activeFilter: action.filter
       };
     }
-    case actionType.STATE.TOGGLE.COMPLETE: {
-      const { id } = action.payload;
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          [id]: {
-            ...state.data[id],
-            completed: !state.data[id].completed,
-          },
-        },
-      };
-    }
     case actionType.API.PENDING: {
       return {
         ...state,
